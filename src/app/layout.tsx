@@ -25,7 +25,6 @@ const jost = Jost({
 export const metadata: Metadata = {
   title: "Fernanda & Jose Luis · 2026",
   description: "Nos casamos y queremos celebrarlo contigo. Jiutepec, Morelos.",
-  icons: { icon: "/favicon.png" },
   openGraph: {
     title: "Fernanda & Jose Luis",
     description: "Nos casamos · Jiutepec, Morelos",
