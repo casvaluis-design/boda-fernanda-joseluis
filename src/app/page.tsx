@@ -69,8 +69,8 @@ export default function InvitationPage() {
           </div>
 
           {/* Nombres */}
-          <p className="animate-fade-in-up delay-200 text-xs uppercase mb-6"
-            style={{ color: "rgba(214,224,247,0.9)", fontFamily: "var(--font-jost)", letterSpacing: "0.5em" }}>
+          <p className="animate-fade-in-up delay-200 uppercase mb-6"
+            style={{ color: "rgba(214,224,247,0.9)", fontFamily: "var(--font-jost)", fontSize: "clamp(0.9rem,2.5vw,1.1rem)", letterSpacing: "0.5em" }}>
             Nos casamos
           </p>
 
@@ -92,7 +92,7 @@ export default function InvitationPage() {
           </div>
 
           <p className="animate-fade-in-up delay-800 uppercase mb-2"
-            style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1rem,2vw,1.4rem)", color: "rgba(255,255,255,0.8)", letterSpacing: "0.25em" }}>
+            style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.6rem,4vw,2.4rem)", color: "rgba(255,255,255,0.9)", letterSpacing: "0.2em" }}>
             17 de Octubre · 2026
           </p>
           <p className="animate-fade-in-up delay-1000"
