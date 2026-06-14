@@ -286,10 +286,10 @@ export function RegalosSection() {
             <Gift size={32} style={{ color: "var(--talavera-blue)" }} />
             <div>
               <p className="uppercase text-xs mb-2" style={{ fontFamily: "var(--font-jost)", color: "var(--talavera-blue)", letterSpacing: "0.25em" }}>Mesa de Regalos</p>
-              <p style={{ fontFamily: "var(--font-playfair)", fontSize: "1.5rem", color: "var(--text-dark)" }}>Liverpool</p>
-              <p className="mt-2" style={{ fontFamily: "var(--font-jost)", fontSize: "0.88rem", color: "var(--text-muted)" }}>Evento No. [PLACEHOLDER]</p>
+              <p style={{ fontFamily: "var(--font-playfair)", fontSize: "1.5rem", color: "var(--text-dark)" }}>mesa.feryluis.com</p>
+              <p className="mt-2" style={{ fontFamily: "var(--font-jost)", fontSize: "0.88rem", color: "var(--text-muted)" }}>Explora y elige tu regalo en línea</p>
             </div>
-            <a href="#" target="_blank" rel="noopener noreferrer"
+            <a href="https://mesa.feryluis.com" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 border uppercase transition-opacity hover:opacity-70"
               style={{ fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.15em", borderColor: "var(--talavera-blue)", color: "var(--talavera-blue)" }}>
               <ExternalLink size={14} /> Ver mesa en línea
@@ -307,10 +307,10 @@ export function RegalosSection() {
               <p className="uppercase text-xs mb-2" style={{ fontFamily: "var(--font-jost)", color: "var(--talavera-blue)", letterSpacing: "0.25em" }}>Transferencia</p>
               <p style={{ fontFamily: "var(--font-playfair)", fontSize: "1.5rem", color: "var(--text-dark)" }}>BBVA / CLABE</p>
               <p className="mt-3" style={{ fontFamily: "var(--font-jost)", fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.8 }}>
-                Banco: [PLACEHOLDER]<br />
-                Cuenta: [PLACEHOLDER]<br />
-                CLABE: [PLACEHOLDER]<br />
-                A nombre de: Fernanda / Jose Luis
+                Banco: BBVA<br />
+                Cuenta: 0490899542<br />
+                CLABE: 012180004908995422<br />
+                A nombre de: José Luis Castro
               </p>
             </div>
           </div>
