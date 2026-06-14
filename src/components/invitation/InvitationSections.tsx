@@ -273,7 +273,7 @@ export function RegalosSection() {
       <div className="relative z-10 max-w-4xl mx-auto px-6">
         <SectionTitle label="Regalos" title="Mesa de Regalos" />
         <p className="text-center mb-14" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.25rem", fontStyle: "italic", color: "var(--text-muted)", lineHeight: 1.8 }}>
-          Su presencia es el mejor regalo. Si desean obsequiarnos algo, aquí van algunas opciones:
+          Su presencia es el mejor regalo. Si desean obsequiarnos algo, aquí hay algunas opciones:
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Liverpool */}

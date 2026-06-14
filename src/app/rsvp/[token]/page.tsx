@@ -362,6 +362,9 @@ export default function RSVPPage() {
                 <>
                   {/* 2. Número de personas */}
                   <FormSection label="¿Cuántas personas asistirán?">
+                    <p className="text-center text-xs mb-3" style={{ fontFamily: "var(--font-jost)", color: "var(--talavera-blue)", letterSpacing: "0.05em" }}>
+                      Tienes <strong>{maxPeople} {maxPeople === 1 ? "lugar reservado" : "lugares reservados"}</strong> para este evento
+                    </p>
                     <div className="flex flex-col items-center gap-3">
                       <Counter value={attendeeCount} min={1} max={maxPeople} onChange={setAttendeeCount} />
                       <p className="text-xs" style={{ fontFamily: "var(--font-jost)", color: "var(--text-muted)" }}>
