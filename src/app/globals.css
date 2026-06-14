@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ── Talavera Azul ─────────────────────────────────────────
+     Paleta inspirada en la cerámica mayólica de Puebla:
+     cobalto profundo sobre blanco puro.
+  ──────────────────────────────────────────────────────── */
+
+  /* Fondos */
+  --cream:       #FFFFFF;          /* blanco puro — como el fondo de la talavera */
+  --warm-white:  #F7F9FE;          /* blanco con toque azulado muy sutil */
+  --tile-bg:     #EEF2FB;          /* fondo de tiles / secciones alternas */
+
+  /* Azules — cobalto talavera */
+  --talavera-blue:       #1A3A8C;  /* cobalto profundo — color principal */
+  --talavera-cobalt:     #2952B3;  /* cobalto medio — patrones internos */
+  --talavera-blue-light: #4A72C4;  /* azul claro — detalles y hover */
+  --talavera-blue-pale:  #D6E0F7;  /* azul pálido — fondos de cards */
+
+  /* Acento — mantener solo un color cálido muy sutil para contraste */
+  --talavera-gold:       #8B6914;  /* dorado oscuro solo para texto de fechas */
+
+  /* Texto */
+  --text-dark:   #0F1F4A;          /* azul casi negro — texto principal */
+  --text-muted:  #4A5A7A;          /* azul grisáceo — texto secundario */
+  --text-light:  #8A9BBF;          /* azul claro — hints y placeholders */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream:              var(--cream);
+  --color-tile-bg:            var(--tile-bg);
+  --color-talavera-blue:      var(--talavera-blue);
+  --color-talavera-cobalt:    var(--talavera-cobalt);
+  --color-talavera-blue-light:var(--talavera-blue-light);
+  --color-talavera-blue-pale: var(--talavera-blue-pale);
+  --color-text-muted:         var(--text-muted);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
+a, button { cursor: pointer; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  font-family: 'Jost', sans-serif;
 }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.9s ease forwards; opacity: 0; }
+.animate-fade-in    { animation: fadeIn  1s   ease forwards; opacity: 0; }
+.animate-float      { animation: float   4s   ease-in-out infinite; }
+
+.delay-100  { animation-delay: 0.1s; }
+.delay-200  { animation-delay: 0.2s; }
+.delay-400  { animation-delay: 0.4s; }
+.delay-600  { animation-delay: 0.6s; }
+.delay-800  { animation-delay: 0.8s; }
+.delay-1000 { animation-delay: 1s;   }
+.delay-1200 { animation-delay: 1.2s; }
