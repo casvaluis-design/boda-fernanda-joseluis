@@ -1,6 +1,7 @@
 "use client";
 
-import { MapPin, Clock, ExternalLink, CreditCard, Gift } from "lucide-react";
+import { useState } from "react";
+import { MapPin, Clock, ExternalLink, CreditCard, Gift, X, BedDouble } from "lucide-react";
 import { TalaveraBgPattern, TalavераCorner, TalaveraBand } from "./TalaveraDecor";
 
 // ─── Datos ────────────────────────────────────────────────────────────────────
@@ -145,7 +146,7 @@ export function SalonSection() {
                 Begonias 10, Atlacomulco, 62560 Jiutepec, Morelos
               </p>
             </div>
-            <a href="https://maps.app.goo.gl/azzqHzQD5f1B9bJn8" target="_blank" rel="noopener noreferrer"
+            <a href="https://maps.app.goo.gl/TqWbcW7nFqnUE8Cv5" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border uppercase transition-opacity hover:opacity-70 w-fit"
               style={{ fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.18em", borderColor: "var(--talavera-blue)", color: "var(--talavera-blue)" }}>
               <MapPin size={14} /> Ver en Google Maps
@@ -207,11 +208,21 @@ export function PhotosSection() {
   );
 }
 
+const ROOMS = [
+  { type: "Deluxe King",   price: "$7,500",  people: "2 personas" },
+  { type: "Deluxe Doble",  price: "$8,000",  people: "4 personas" },
+  { type: "Villa 1",       price: "$28,000", people: "12 personas" },
+  { type: "Villa 2",       price: "$25,500", people: "10 personas" },
+];
+
+const HOTEL_WHATSAPP = "527771234567"; // ← reemplaza con el número real del hotel
+
 // ─── Hospedaje ────────────────────────────────────────────────────────────────
 export function HospedajeSection() {
+  const [showRooms, setShowRooms] = useState(false);
+
   return (
     <section id="hospedaje" className="w-full" style={{ background: "white" }}>
-      {/* Casa Begonias — split */}
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[520px]">
         <div className="w-full h-72 lg:h-auto overflow-hidden">
           <img src="/images/casa-begonias.jpg" alt="Casa Begonias"
@@ -240,15 +251,20 @@ export function HospedajeSection() {
               ))}
             </ul>
             <div className="flex gap-3 flex-wrap">
-              <a href="#" target="_blank" rel="noopener noreferrer"
+              <button onClick={() => setShowRooms(true)}
                 className="inline-flex items-center gap-2 px-6 py-3 uppercase transition-opacity hover:opacity-80"
                 style={{ background: "var(--talavera-blue)", color: "white", fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.18em" }}>
-                <ExternalLink size={14} /> Reservar
-              </a>
-              <a href="https://maps.app.goo.gl/azzqHzQD5f1B9bJn8" target="_blank" rel="noopener noreferrer"
+                <BedDouble size={14} /> Info habitaciones
+              </button>
+              <a href="https://maps.app.goo.gl/TqWbcW7nFqnUE8Cv5" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 border uppercase transition-opacity hover:opacity-70"
                 style={{ borderColor: "var(--talavera-blue)", color: "var(--talavera-blue)", fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.18em" }}>
                 <MapPin size={14} /> Ver ubicación
+              </a>
+              <a href={`https://wa.me/${HOTEL_WHATSAPP}`} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 border uppercase transition-opacity hover:opacity-70"
+                style={{ borderColor: "var(--talavera-blue)", color: "var(--talavera-blue)", fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.18em" }}>
+                WhatsApp hotel
               </a>
             </div>
           </div>
@@ -261,6 +277,55 @@ export function HospedajeSection() {
           * También puedes hospedarte en hoteles o Airbnb cercanos en la zona de Jiutepec y Cuernavaca.
         </p>
       </div>
+
+      {/* Modal habitaciones */}
+      {showRooms && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          style={{ background: "rgba(15,31,74,0.6)" }}
+          onClick={(e) => e.target === e.currentTarget && setShowRooms(false)}>
+          <div className="bg-white w-full max-w-lg p-8 relative">
+            <button onClick={() => setShowRooms(false)}
+              className="absolute top-4 right-4 hover:opacity-60 transition-opacity"
+              style={{ color: "var(--text-muted)" }}>
+              <X size={20} />
+            </button>
+            <p className="uppercase mb-2" style={{ fontFamily: "var(--font-jost)", fontSize: "0.68rem", letterSpacing: "0.45em", color: "var(--talavera-blue)" }}>Casa Begonias</p>
+            <h3 className="mb-6" style={{ fontFamily: "var(--font-playfair)", fontSize: "1.8rem", fontWeight: 400, color: "var(--text-dark)" }}>Información de habitaciones</h3>
+
+            <table className="w-full text-sm mb-6" style={{ fontFamily: "var(--font-jost)" }}>
+              <thead>
+                <tr style={{ borderBottom: "2px solid var(--talavera-blue-pale)" }}>
+                  <th className="text-left pb-3 uppercase text-xs" style={{ letterSpacing: "0.15em", color: "var(--talavera-blue)" }}>Habitación</th>
+                  <th className="text-center pb-3 uppercase text-xs" style={{ letterSpacing: "0.15em", color: "var(--talavera-blue)" }}>Personas</th>
+                  <th className="text-right pb-3 uppercase text-xs" style={{ letterSpacing: "0.15em", color: "var(--talavera-blue)" }}>Precio</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ROOMS.map((r) => (
+                  <tr key={r.type} style={{ borderBottom: "1px solid var(--talavera-blue-pale)" }}>
+                    <td className="py-3" style={{ color: "var(--text-dark)", fontWeight: 500 }}>{r.type}</td>
+                    <td className="py-3 text-center" style={{ color: "var(--text-muted)" }}>{r.people}</td>
+                    <td className="py-3 text-right" style={{ color: "var(--talavera-blue)", fontWeight: 600 }}>{r.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <p className="text-xs mb-1" style={{ fontFamily: "var(--font-jost)", color: "var(--talavera-blue)", letterSpacing: "0.05em" }}>
+              ✓ Incluyen impuestos y desayunos del sábado y domingo
+            </p>
+            <p className="text-xs italic" style={{ fontFamily: "var(--font-cormorant)", color: "var(--text-muted)", fontSize: "0.95rem" }}>
+              * Sujeto a disponibilidad de habitaciones al momento de la reservación.
+            </p>
+
+            <a href={`https://wa.me/${HOTEL_WHATSAPP}`} target="_blank" rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 px-6 py-3 uppercase transition-opacity hover:opacity-80 w-full justify-center"
+              style={{ background: "var(--talavera-blue)", color: "white", fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.18em" }}>
+              Contactar hotel por WhatsApp
+            </a>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
