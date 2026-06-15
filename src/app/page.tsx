@@ -47,9 +47,6 @@ export default function InvitationPage() {
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
         style={{ background: "var(--talavera-blue)" }}>
 
-        {/* Patrón talavera de fondo */}
-        <TalaveraBgPattern opacity={0.12} />
-
         {/* Foto hero */}
         <div className="absolute inset-0 z-0">
           <img src="/images/hero-boda.jpg" alt="Fernanda y Jose Luis"
@@ -131,7 +128,6 @@ export default function InvitationPage() {
       ══════════════════════════════════════════ */}
       <section id="rsvp" className="relative w-full py-28 overflow-hidden"
         style={{ background: "var(--talavera-blue)" }}>
-        <TalaveraBgPattern opacity={0.1} />
         <div className="relative z-10 flex flex-col items-center text-center px-6">
           <img src="/images/logo-boda-blanco.png" alt="F & JL"
             style={{ width: 160, height: 160, objectFit: "contain", filter: "drop-shadow(0 0 20px rgba(255,255,255,0.2))" }} />

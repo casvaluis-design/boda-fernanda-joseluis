@@ -215,7 +215,6 @@ export function PhotosSection() {
       </div>
       {/* Quote */}
       <div className="relative py-20 px-6 text-center overflow-hidden" style={{ background: "var(--talavera-blue)" }}>
-        <TalaveraBgPattern opacity={0.08} />
         <div className="relative z-10 max-w-2xl mx-auto">
           <p style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.3rem,2.5vw,1.8rem)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.8 }}>
             &ldquo;La magia de la conexión, la suerte de coincidir, el esfuerzo de permanecer y la bendición de ser un nosotros.&rdquo;

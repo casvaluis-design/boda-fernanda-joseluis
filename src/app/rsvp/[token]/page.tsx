@@ -197,7 +197,6 @@ export default function RSVPPage() {
       ══════════════════════════════════════════ */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
         style={{ background: "var(--talavera-blue)" }}>
-        <TalaveraBgPattern opacity={0.12} />
         <div className="absolute inset-0 z-0">
           <img src="/images/hero-boda.jpg" alt="Fernanda y Jose Luis"
             className="w-full h-full object-cover object-center" />
@@ -268,7 +267,6 @@ export default function RSVPPage() {
       ══════════════════════════════════════════ */}
       <section id="rsvp-form" ref={rsvpRef} className="relative w-full pt-20 pb-10 overflow-hidden"
         style={{ background: "var(--talavera-blue)" }}>
-        <TalaveraBgPattern opacity={0.1} />
         <div className="relative z-10 flex flex-col items-center text-center px-6">
 
           <img src="/images/logo-boda-blanco.png" alt="F & JL"
