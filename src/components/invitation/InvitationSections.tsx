@@ -167,7 +167,7 @@ export function SalonSection() {
                 Begonias 10, Atlacomulco, 62560 Jiutepec, Morelos
               </p>
             </div>
-            <a href="https://maps.app.goo.gl/TqWbcW7nFqnUE8Cv5" target="_blank" rel="noopener noreferrer"
+            <a href="https://maps.app.goo.gl/a2c8Agu5cVBM9j7p6" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border uppercase transition-opacity hover:opacity-70 w-fit"
               style={{ fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.18em", borderColor: "var(--talavera-blue)", color: "var(--talavera-blue)" }}>
               <MapPin size={14} /> Ver en Google Maps
@@ -249,9 +249,8 @@ export function HospedajeSection() {
           <img src="/images/casa-begonias.jpg" alt="Casa Begonias"
             className="w-full h-full object-cover" />
         </div>
-        <div className="relative flex flex-col justify-center px-10 py-16 lg:px-20">
-          <TalaveraBgPattern opacity={0.04} />
-          <div className="relative z-10">
+        <div className="flex flex-col justify-center px-10 py-16 lg:px-20">
+          <div>
             <p className="uppercase mb-3" style={{ fontFamily: "var(--font-jost)", fontSize: "0.68rem", letterSpacing: "0.45em", color: "var(--talavera-blue)" }}>
               Hospedaje
             </p>
