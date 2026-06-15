@@ -77,33 +77,49 @@ export function TalavераCorner({ size = 40, position = "tl" }: { size?: numbe
 
 // ─── Cenefa talavera horizontal (entre secciones) ────────────────────────────
 export function TalaveraBand() {
+  // Tile 80×80: fondo azul, flor central con pétalos, gotas en esquinas
   return (
-    <div className="w-full overflow-hidden" style={{ height: 48, background: C.cobalt }}>
-      <svg viewBox="0 0 1200 48" preserveAspectRatio="xMidYMid slice"
-        xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-        {/* Fondo */}
-        <rect width="1200" height="48" fill={C.cobalt} />
-        {/* Línea blanca superior e inferior */}
-        <line x1="0" y1="4" x2="1200" y2="4" stroke="white" strokeWidth="0.8" opacity="0.4" />
-        <line x1="0" y1="44" x2="1200" y2="44" stroke="white" strokeWidth="0.8" opacity="0.4" />
-        {/* Motivos repetidos */}
-        {Array.from({ length: 20 }).map((_, i) => {
-          const cx = 30 + i * 60;
-          return (
-            <g key={i} transform={`translate(${cx},24)`}>
-              <circle cx="0" cy="0" r="8" fill="none" stroke="white" strokeWidth="1" opacity="0.6" />
-              <circle cx="0" cy="0" r="3" fill="white" opacity="0.8" />
-              {[0,90,180,270].map((a) => (
-                <ellipse key={a} cx={0} cy={-13} rx="2" ry="4"
-                  fill="white" opacity="0.5" transform={`rotate(${a})`} />
-              ))}
-              {[45,135,225,315].map((a) => (
-                <ellipse key={a} cx={0} cy={-11} rx="1.2" ry="2.5"
-                  fill={C.pale} opacity="0.4" transform={`rotate(${a})`} />
-              ))}
+    <div className="w-full overflow-hidden" style={{ height: 80, background: C.cobalt }}>
+      <svg width="100%" height="80" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="talavera-band-tile" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+            {/* Fondo */}
+            <rect width="80" height="80" fill={C.cobalt} />
+            {/* Marco interior */}
+            <rect x="3" y="3" width="74" height="74" fill="none" stroke="white" strokeWidth="1.2" opacity="0.5" />
+            <rect x="6" y="6" width="68" height="68" fill="none" stroke="white" strokeWidth="0.5" opacity="0.3" />
+            {/* Flor central — 4 pétalos grandes */}
+            <g transform="translate(40,40)">
+              {/* Pétalos principales N S E W */}
+              <ellipse cx="0" cy="-16" rx="6" ry="13" fill="white" opacity="0.9" />
+              <ellipse cx="0" cy="16"  rx="6" ry="13" fill="white" opacity="0.9" />
+              <ellipse cx="-16" cy="0" rx="13" ry="6" fill="white" opacity="0.9" />
+              <ellipse cx="16"  cy="0" rx="13" ry="6" fill="white" opacity="0.9" />
+              {/* Pétalos diagonales pequeños */}
+              <ellipse cx="-10" cy="-10" rx="4" ry="8" fill="white" opacity="0.55" transform="rotate(-45,−10,−10)" />
+              <ellipse cx="10"  cy="-10" rx="4" ry="8" fill="white" opacity="0.55" transform="rotate(45,10,−10)" />
+              <ellipse cx="-10" cy="10"  rx="4" ry="8" fill="white" opacity="0.55" transform="rotate(45,−10,10)" />
+              <ellipse cx="10"  cy="10"  rx="4" ry="8" fill="white" opacity="0.55" transform="rotate(-45,10,10)" />
+              {/* Círculo central */}
+              <circle cx="0" cy="0" r="7" fill={C.cobalt} />
+              <circle cx="0" cy="0" r="4" fill="white" opacity="0.9" />
+              <circle cx="0" cy="0" r="2" fill={C.cobalt} />
             </g>
-          );
-        })}
+            {/* Gotas en las 4 esquinas */}
+            {([[14,14],[66,14],[14,66],[66,66]] as [number,number][]).map(([cx,cy],i) => (
+              <g key={i} transform={`translate(${cx},${cy})`}>
+                <circle cx="0" cy="0" r="5" fill="white" opacity="0.8" />
+                <circle cx="0" cy="0" r="2.5" fill={C.cobalt} />
+                {/* gotitas alrededor */}
+                {[0,90,180,270].map((a) => (
+                  <ellipse key={a} cx="0" cy="-9" rx="1.8" ry="3.5"
+                    fill="white" opacity="0.6" transform={`rotate(${a})`} />
+                ))}
+              </g>
+            ))}
+          </pattern>
+        </defs>
+        <rect width="100%" height="80" fill="url(#talavera-band-tile)" />
       </svg>
     </div>
   );
