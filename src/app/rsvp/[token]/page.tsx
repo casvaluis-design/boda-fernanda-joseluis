@@ -254,15 +254,6 @@ export default function RSVPPage() {
         </div>
       </section>
 
-      <TalaveraBand />
-
-      {/* ── SECCIONES ── */}
-      <SalonSection />
-      <AgendaSection />
-      <PhotosSection />
-      <HospedajeSection />
-      <RegalosSection />
-
       {/* ══════════════════════════════════════════
           RSVP PERSONALIZADO
       ══════════════════════════════════════════ */}
@@ -447,6 +438,14 @@ export default function RSVPPage() {
           )}
         </div>
       </div>
+
+      {/* ── SECCIONES ── */}
+      <TalaveraBand />
+      <SalonSection />
+      <AgendaSection />
+      <PhotosSection />
+      <HospedajeSection />
+      <RegalosSection />
 
       {/* Footer */}
       <div className="w-full px-6 py-6" style={{ background: "var(--talavera-blue)" }}>
