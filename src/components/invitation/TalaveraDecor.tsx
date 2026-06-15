@@ -8,46 +8,15 @@ const C = {
 };
 
 // ─── Patrón talavera de fondo (tile repetible) ────────────────────────────────
-export function TalaveraBgPattern({ opacity = 0.045 }: { opacity?: number }) {
+export function TalaveraBgPattern({ opacity = 0.06 }: { opacity?: number }) {
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0, opacity }}>
-      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="talavera-tile" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-            {/* Marco exterior */}
-            <rect x="4" y="4" width="112" height="112" fill="none" stroke={C.cobalt} strokeWidth="2" />
-            <rect x="10" y="10" width="100" height="100" fill="none" stroke={C.cobalt} strokeWidth="0.8" />
-            {/* Flor central */}
-            <g transform="translate(60,60)">
-              <circle cx="0" cy="0" r="22" fill="none" stroke={C.cobalt} strokeWidth="1.5" />
-              <circle cx="0" cy="0" r="6" fill={C.cobalt} />
-              {[0,45,90,135,180,225,270,315].map((a,i) => (
-                <ellipse key={a} cx={0} cy={-16} rx="3" ry="6"
-                  fill={i%2===0 ? C.cobalt : C.medium}
-                  transform={`rotate(${a})`} />
-              ))}
-            </g>
-            {/* Esquinas florales */}
-            {[[18,18],[102,18],[18,102],[102,102]].map(([cx,cy],i) => (
-              <g key={i} transform={`translate(${cx},${cy})`}>
-                <circle cx="0" cy="0" r="7" fill="none" stroke={C.cobalt} strokeWidth="1" />
-                <circle cx="0" cy="0" r="3" fill={C.cobalt} />
-                {[0,90,180,270].map((a) => (
-                  <ellipse key={a} cx={0} cy={-10} rx="2" ry="4"
-                    fill={C.medium} transform={`rotate(${a})`} />
-                ))}
-              </g>
-            ))}
-            {/* Líneas diagonales decorativas */}
-            <line x1="18" y1="18" x2="36" y2="36" stroke={C.cobalt} strokeWidth="0.5" />
-            <line x1="102" y1="18" x2="84" y2="36" stroke={C.cobalt} strokeWidth="0.5" />
-            <line x1="18" y1="102" x2="36" y2="84" stroke={C.cobalt} strokeWidth="0.5" />
-            <line x1="102" y1="102" x2="84" y2="84" stroke={C.cobalt} strokeWidth="0.5" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#talavera-tile)" />
-      </svg>
-    </div>
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{
+      zIndex: 0,
+      opacity,
+      backgroundImage: "url('/images/patron-hero-2.svg')",
+      backgroundRepeat: "repeat",
+      backgroundSize: "120px 120px",
+    }} />
   );
 }
 
