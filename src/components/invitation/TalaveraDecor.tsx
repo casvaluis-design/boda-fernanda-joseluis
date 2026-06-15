@@ -78,20 +78,22 @@ export function TalavераCorner({ size = 40, position = "tl" }: { size?: numbe
 // ─── Cenefa talavera horizontal (entre secciones) ────────────────────────────
 export function TalaveraBand() {
   return (
-    <div className="w-full overflow-hidden hidden sm:block" style={{
-      height: 64,
-      backgroundImage: "url('/images/patron-hero-2.svg')",
-      backgroundRepeat: "repeat-x",
-      backgroundSize: "64px 64px",
-      backgroundPosition: "center center",
-    }} />
-    <div className="w-full overflow-hidden sm:hidden" style={{
-      height: 40,
-      backgroundImage: "url('/images/patron-hero-2.svg')",
-      backgroundRepeat: "repeat-x",
-      backgroundSize: "40px 40px",
-      backgroundPosition: "center center",
-    }} />
+    <>
+      <div className="w-full overflow-hidden hidden sm:block" style={{
+        height: 64,
+        backgroundImage: "url('/images/patron-hero-2.svg')",
+        backgroundRepeat: "repeat-x",
+        backgroundSize: "64px 64px",
+        backgroundPosition: "center center",
+      }} />
+      <div className="w-full overflow-hidden sm:hidden" style={{
+        height: 40,
+        backgroundImage: "url('/images/patron-hero-2.svg')",
+        backgroundRepeat: "repeat-x",
+        backgroundSize: "40px 40px",
+        backgroundPosition: "center center",
+      }} />
+    </>
   );
 }
 
