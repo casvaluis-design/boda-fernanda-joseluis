@@ -254,6 +254,15 @@ export default function RSVPPage() {
         </div>
       </section>
 
+      <TalaveraBand />
+
+      {/* ── SECCIONES ── */}
+      <SalonSection />
+      <AgendaSection />
+      <PhotosSection />
+      <HospedajeSection />
+      <RegalosSection />
+
       {/* ══════════════════════════════════════════
           RSVP PERSONALIZADO
       ══════════════════════════════════════════ */}
@@ -280,22 +289,23 @@ export default function RSVPPage() {
               <span style={{ color: "white", fontWeight: 500 }}>{maxPeople} {maxPeople === 1 ? "lugar" : "lugares"}</span> para ti.
             </p>
           )}
-
-          <div className="w-14 h-px my-6" style={{ background: "rgba(255,255,255,0.3)" }} />
-
-          <p style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.1rem,2vw,1.4rem)", fontStyle: "italic", color: "rgba(255,255,255,0.85)", lineHeight: 1.9 }}>
-            Por favor confirma tu asistencia antes del<br />
-            <span style={{ color: "white", fontWeight: 500 }}>31 de julio de 2026</span>
-          </p>
-          <p className="mt-3" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1rem", fontStyle: "italic", color: "rgba(255,255,255,0.6)" }}>
-            Agradecemos su presencia sin niños.
-          </p>
         </div>
       </section>
 
       {/* ── Formulario ── */}
       <div className="w-full" style={{ background: "white" }}>
         <div className="max-w-xl mx-auto px-6 py-16">
+
+          {/* Fecha límite y nota */}
+          <div className="text-center mb-10">
+            <p style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.1rem,2vw,1.4rem)", fontStyle: "italic", color: "var(--text-muted)", lineHeight: 1.9 }}>
+              Por favor confirma tu asistencia antes del<br />
+              <span style={{ color: "var(--talavera-blue)", fontWeight: 500 }}>31 de julio de 2026</span>
+            </p>
+            <p className="mt-2" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1rem", fontStyle: "italic", color: "var(--text-muted)" }}>
+              Agradecemos su presencia sin niños.
+            </p>
+          </div>
 
           {/* Ya confirmó */}
           {alreadySubmitted && (
@@ -438,14 +448,6 @@ export default function RSVPPage() {
           )}
         </div>
       </div>
-
-      {/* ── SECCIONES ── */}
-      <TalaveraBand />
-      <SalonSection />
-      <AgendaSection />
-      <PhotosSection />
-      <HospedajeSection />
-      <RegalosSection />
 
       {/* Footer */}
       <div className="w-full px-6 py-6" style={{ background: "var(--talavera-blue)" }}>
