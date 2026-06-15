@@ -96,7 +96,7 @@ export default function InvitationPage() {
             17 de Octubre · 2026
           </p>
           <p className="animate-fade-in-up delay-1000"
-            style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.1rem,2vw,1.5rem)", fontStyle: "italic", color: "rgba(214,224,247,0.85)" }}>
+            style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.6rem,3.5vw,2.2rem)", fontStyle: "italic", color: "rgba(214,224,247,0.85)" }}>
             Jiutepec, Morelos
           </p>
 
