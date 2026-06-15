@@ -77,6 +77,7 @@ export default function AdminPage() {
   const [refreshing, setRefreshing] = useState(false);
   const [filter, setFilter] = useState<FilterStatus>("all");
   const [eventFilter, setEventFilter] = useState<EventKey | "all">("all");
+  const [hospFilter, setHospFilter] = useState<"all" | "casa_begonias" | "otro" | "none">("all");
   const [search, setSearch] = useState("");
 
   // Modals
@@ -272,7 +273,8 @@ export default function AdminPage() {
     const st = filter === "all" || g.status === filter;
     const sr = g.name.toLowerCase().includes(search.toLowerCase()) || (g.phone?.includes(search) ?? false);
     const ev = eventFilter === "all" || (g.rsvp?.events ?? []).includes(eventFilter as EventKey);
-    return st && sr && ev;
+    const ho = hospFilter === "all" || (hospFilter === "none" ? !g.rsvp?.accommodation || g.rsvp.accommodation === "none" : g.rsvp?.accommodation === hospFilter);
+    return st && sr && ev && ho;
   });
 
   const statusColor = { confirmed: "var(--talavera-blue-light)", declined: "var(--talavera-cobalt)", pending: "var(--talavera-blue-light)" };
@@ -399,6 +401,20 @@ export default function AdminPage() {
               <button key={ev.key} onClick={() => setEventFilter(ev.key)} className="px-3 py-1.5 text-xs border transition-colors"
                 style={{ fontFamily: "var(--font-jost)", background: eventFilter === ev.key ? "var(--talavera-blue-light)" : "white", color: eventFilter === ev.key ? "#FAF6F0" : "var(--text-muted)", borderColor: eventFilter === ev.key ? "var(--talavera-blue-light)" : "rgba(0,0,0,0.1)" }}>
                 {ev.label}
+              </button>
+            ))}
+          </div>
+          <div className="flex gap-2 flex-wrap items-center">
+            <span className="text-xs uppercase" style={{ fontFamily: "var(--font-jost)", color: "var(--text-muted)", letterSpacing: "0.15em" }}>Hospedaje:</span>
+            {([
+              { key: "all", label: "Todos" },
+              { key: "casa_begonias", label: "Casa Begonias" },
+              { key: "otro", label: "Otro lugar" },
+              { key: "none", label: "Sin selección" },
+            ] as { key: "all" | "casa_begonias" | "otro" | "none"; label: string }[]).map((h) => (
+              <button key={h.key} onClick={() => setHospFilter(h.key)} className="px-3 py-1.5 text-xs border transition-colors"
+                style={{ fontFamily: "var(--font-jost)", background: hospFilter === h.key ? "var(--talavera-blue)" : "white", color: hospFilter === h.key ? "#FAF6F0" : "var(--text-muted)", borderColor: hospFilter === h.key ? "var(--talavera-blue)" : "rgba(0,0,0,0.1)" }}>
+                {h.label}
               </button>
             ))}
           </div>
