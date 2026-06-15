@@ -450,9 +450,10 @@ export default function RSVPPage() {
       </div>
 
       {/* Footer */}
-      <div className="w-full px-6 py-6" style={{ background: "var(--talavera-blue)" }}>
-        <TalaveraBorderTop />
-        <p className="text-center mt-4 text-xs uppercase"
+      <div className="w-full" style={{ background: "var(--talavera-blue)" }}>
+        <div className="hidden sm:block w-full" style={{ height: 56, backgroundImage: "url('/images/patron-hero-4-2.svg')", backgroundRepeat: "repeat-x", backgroundSize: "229px 56px", backgroundPosition: "left center" }} />
+        <div className="sm:hidden w-full" style={{ height: 36, backgroundImage: "url('/images/patron-hero-4-2.svg')", backgroundRepeat: "repeat-x", backgroundSize: "147px 36px", backgroundPosition: "left center" }} />
+        <p className="text-center py-5 text-xs uppercase"
           style={{ fontFamily: "var(--font-jost)", color: "rgba(255,255,255,0.3)", letterSpacing: "0.3em" }}>
           Fernanda &amp; Jose Luis · Octubre 2026
         </p>
