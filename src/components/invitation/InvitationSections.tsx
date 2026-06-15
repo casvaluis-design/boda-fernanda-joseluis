@@ -18,13 +18,13 @@ export const AGENDA: AgendaDay[] = [
     num: 1, title: "Civil + Rompe Hielos",
     date: "Viernes 16 de octubre, 2026",
     location: "Jardín Alma", city: "Jiutepec, Morelos", time: "4:30 PM",
-    dresscode: { title: "Tonos blancos / nude / beige", lines: ["Ligeros y cómodos", "Manta o guayabera"], insp: "#" },
+    dresscode: { title: "Tonos blancos / nude / beige", lines: ["Ligeros y cómodos", "Manta o guayabera"], insp: "/images/dresscode-civil-viernes.png" },
   },
   {
     num: 2, title: "Ceremonia + Recepción",
     date: "Sábado 17 de octubre, 2026",
     location: "Jardín Alma", city: "Jiutepec, Morelos", time: "1:30 PM",
-    dresscode: { title: "Formal", lines: ["Vestido largo para ellas", "Traje para ellos", "NO tenis · NO guayabera"], insp: "#" },
+    dresscode: { title: "Formal", lines: ["Vestido largo para ellas", "Traje para ellos", "NO tenis · NO guayabera"], insp: "/images/dresscode-boda-sabado.png" },
   },
 ];
 
@@ -51,6 +51,41 @@ export function SectionTitle({ label, title, light = false }: { label: string; t
         {title}
       </h2>
       <div className="w-14 h-px mx-auto mt-5" style={{ background: light ? "rgba(255,255,255,0.4)" : "var(--talavera-blue-pale)" }} />
+    </div>
+  );
+}
+
+// ─── Dresscode block con modal ───────────────────────────────────────────────
+function DresscodeBlock({ dresscode }: { dresscode: NonNullable<AgendaDay["dresscode"]> }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="pt-5 border-t" style={{ borderColor: "var(--talavera-blue-pale)" }}>
+      <p className="uppercase mb-2" style={{ fontFamily: "var(--font-jost)", fontSize: "0.65rem", letterSpacing: "0.2em", color: "var(--talavera-blue)" }}>Dresscode</p>
+      <p className="font-medium mb-2" style={{ fontFamily: "var(--font-jost)", fontSize: "1rem", color: "var(--text-dark)" }}>{dresscode.title}</p>
+      {dresscode.lines.map((l, i) => (
+        <p key={i} style={{ fontFamily: "var(--font-jost)", fontSize: "0.88rem", color: "var(--text-muted)" }}>{l}</p>
+      ))}
+      {dresscode.insp && (
+        <button onClick={() => setOpen(true)}
+          className="inline-block mt-5 px-5 py-2.5 uppercase border transition-opacity hover:opacity-70"
+          style={{ fontFamily: "var(--font-jost)", fontSize: "0.72rem", letterSpacing: "0.18em", borderColor: "var(--talavera-blue)", color: "var(--talavera-blue)" }}>
+          Inspo Dresscode
+        </button>
+      )}
+      {open && dresscode.insp && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          style={{ background: "rgba(15,31,74,0.75)" }}
+          onClick={() => setOpen(false)}>
+          <div className="relative max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setOpen(false)}
+              className="absolute -top-10 right-0 flex items-center gap-1 text-white hover:opacity-70 transition-opacity"
+              style={{ fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.15em" }}>
+              <X size={16} /> Cerrar
+            </button>
+            <img src={dresscode.insp} alt="Dresscode" className="w-full h-auto" style={{ maxHeight: "80vh", objectFit: "contain" }} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -92,20 +127,7 @@ function AgendaCard({ day }: { day: AgendaDay }) {
         </div>
         <div className="flex-1" />
         {day.dresscode && (
-          <div className="pt-5 border-t" style={{ borderColor: "var(--talavera-blue-pale)" }}>
-            <p className="uppercase mb-2" style={{ fontFamily: "var(--font-jost)", fontSize: "0.65rem", letterSpacing: "0.2em", color: "var(--talavera-blue)" }}>Dresscode</p>
-            <p className="font-medium mb-2" style={{ fontFamily: "var(--font-jost)", fontSize: "1rem", color: "var(--text-dark)" }}>{day.dresscode.title}</p>
-            {day.dresscode.lines.map((l, i) => (
-              <p key={i} style={{ fontFamily: "var(--font-jost)", fontSize: "0.88rem", color: "var(--text-muted)" }}>{l}</p>
-            ))}
-            {day.dresscode.insp && (
-              <a href={day.dresscode.insp} target="_blank" rel="noopener noreferrer"
-                className="inline-block mt-5 px-5 py-2.5 uppercase border transition-opacity hover:opacity-70"
-                style={{ fontFamily: "var(--font-jost)", fontSize: "0.72rem", letterSpacing: "0.18em", borderColor: "var(--talavera-blue)", color: "var(--talavera-blue)" }}>
-                Inspo Dresscode
-              </a>
-            )}
-          </div>
+          <DresscodeBlock dresscode={day.dresscode} />
         )}
       </div>
     </div>
