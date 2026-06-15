@@ -79,11 +79,12 @@ export function TalavераCorner({ size = 40, position = "tl" }: { size?: numbe
 export function TalaveraBand() {
   return (
     <div className="w-full overflow-hidden" style={{
-      height: 56,
+      height: 80,
       background: C.cobalt,
       backgroundImage: "url('/images/patron-hero.svg')",
       backgroundRepeat: "repeat-x",
-      backgroundSize: "56px 56px",
+      backgroundSize: "52px 36px",
+      backgroundPosition: "center center",
     }} />
   );
 }
