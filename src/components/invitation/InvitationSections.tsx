@@ -215,7 +215,8 @@ const ROOMS = [
   { type: "Villa 2",       price: "$25,500", people: "10 personas" },
 ];
 
-const HOTEL_WHATSAPP = "527771234567"; // ← reemplaza con el número real del hotel
+const HOTEL_WHATSAPP = "527771901621";
+const HOTEL_WA_MSG = encodeURIComponent("Hola, quisiera reservar para la boda de Fernanda y Jose Luis del 16 al 18 de octubre del 2026.");
 
 // ─── Hospedaje ────────────────────────────────────────────────────────────────
 export function HospedajeSection() {
@@ -261,7 +262,7 @@ export function HospedajeSection() {
                 style={{ borderColor: "var(--talavera-blue)", color: "var(--talavera-blue)", fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.18em" }}>
                 <MapPin size={14} /> Ver ubicación
               </a>
-              <a href={`https://wa.me/${HOTEL_WHATSAPP}`} target="_blank" rel="noopener noreferrer"
+              <a href={`https://wa.me/${HOTEL_WHATSAPP}?text=${HOTEL_WA_MSG}`} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 border uppercase transition-opacity hover:opacity-70"
                 style={{ borderColor: "var(--talavera-blue)", color: "var(--talavera-blue)", fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.18em" }}>
                 WhatsApp hotel
@@ -318,7 +319,7 @@ export function HospedajeSection() {
               * Sujeto a disponibilidad de habitaciones al momento de la reservación.
             </p>
 
-            <a href={`https://wa.me/${HOTEL_WHATSAPP}`} target="_blank" rel="noopener noreferrer"
+            <a href={`https://wa.me/${HOTEL_WHATSAPP}?text=${HOTEL_WA_MSG}`} target="_blank" rel="noopener noreferrer"
               className="mt-6 inline-flex items-center gap-2 px-6 py-3 uppercase transition-opacity hover:opacity-80 w-full justify-center"
               style={{ background: "var(--talavera-blue)", color: "white", fontFamily: "var(--font-jost)", fontSize: "0.75rem", letterSpacing: "0.18em" }}>
               Contactar hotel por WhatsApp
