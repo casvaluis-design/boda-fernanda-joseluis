@@ -412,7 +412,7 @@ export default function AdminPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr style={{ borderBottom: "1px solid rgba(27,75,138,0.1)", background: "rgba(27,75,138,0.03)" }}>
-                  {["Nombre", "Tipo", "Estado", "Personas", "Eventos", "Hospedaje", "Hotel Alma", "Alergias", "Notas", "Acciones"].map((h) => (
+                  {["Nombre", "Tipo", "Estado", "Personas", "Eventos", "Hospedaje", "Hotel Alma", "Alergias", "Mensaje", "Notas", "Acciones"].map((h) => (
                     <th key={h} className="px-3 py-3 text-left text-xs uppercase whitespace-nowrap"
                       style={{ fontFamily: "var(--font-jost)", color: "var(--text-muted)", letterSpacing: "0.1em" }}>{h}</th>
                   ))}
@@ -452,6 +452,9 @@ export default function AdminPage() {
                       <td className="px-3 py-3 text-xs max-w-[140px]" style={{ fontFamily: "var(--font-jost)", color: "var(--talavera-cobalt)" }}>
                         {g.rsvp?.allergies ? <span className="truncate flex items-center gap-1"><AlertTriangle size={11} />{g.rsvp.allergies}</span> : <span style={{ color: "var(--text-muted)" }}>—</span>}
                       </td>
+                      <td className="px-3 py-3 text-xs max-w-[180px]" style={{ fontFamily: "var(--font-jost)", color: "var(--text-muted)" }}>
+                        {g.rsvp?.message ? <span className="truncate block" title={g.rsvp.message}>{g.rsvp.message}</span> : <span>—</span>}
+                      </td>
                       <td className="px-3 py-3 text-xs max-w-[140px]" style={{ fontFamily: "var(--font-jost)", color: "var(--text-muted)" }}>
                         {g.notes ? <span className="truncate flex items-center gap-1"><StickyNote size={11} />{g.notes}</span> : <span>—</span>}
                       </td>
@@ -486,7 +489,7 @@ export default function AdminPage() {
                   );
                 })}
                 {filtered.length === 0 && (
-                  <tr><td colSpan={10} className="px-4 py-8 text-center text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-cormorant)" }}>No se encontraron invitados</td></tr>
+                  <tr><td colSpan={11} className="px-4 py-8 text-center text-sm" style={{ color: "var(--text-muted)", fontFamily: "var(--font-cormorant)" }}>No se encontraron invitados</td></tr>
                 )}
               </tbody>
             </table>
