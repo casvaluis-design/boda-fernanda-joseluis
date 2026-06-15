@@ -258,7 +258,14 @@ export default function AdminPage() {
   const confirmed  = guests.filter((g) => g.status === "confirmed");
   const declined   = guests.filter((g) => g.status === "declined");
   const pending    = guests.filter((g) => g.status === "pending");
-  const totalPeople = confirmed.reduce((a, g) => a + (g.rsvp?.attendee_count ?? 0), 0);
+  // Total personas esperadas = suma de (max_companions + 1) de todos los grupos
+  const totalPersonasEsperadas = guests.reduce((a, g) => a + (g.max_companions ?? 0) + 1, 0);
+  // Grupos = número de registros
+  const totalGrupos = guests.length;
+  // Personas confirmadas/declinadas = suma del attendee_count reportado en el RSVP
+  const personasConfirmadas = confirmed.reduce((a, g) => a + (g.rsvp?.attendee_count ?? 0), 0);
+  const personasDeclinadas  = declined.reduce((a, g) => a + (g.rsvp?.attendee_count ?? (g.max_companions ?? 0) + 1), 0);
+  const totalPeople = personasConfirmadas;
   const eventCounts = EVENTS.map((ev) => ({
     ...ev,
     count: confirmed.filter((g) => g.rsvp?.events?.includes(ev.key)).length,
@@ -315,11 +322,12 @@ export default function AdminPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6">
 
         {/* Stat cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <StatCard label="Total invitados"  value={guests.length}    icon={<Users size={20} />}       color="var(--talavera-blue)" />
-          <StatCard label="Confirmados"       value={confirmed.length} icon={<CheckCircle size={20} />} color="var(--talavera-blue-light)" />
-          <StatCard label="Declinados"        value={declined.length}  icon={<XCircle size={20} />}     color="var(--talavera-cobalt)" />
-          <StatCard label="Sin respuesta"     value={pending.length}   icon={<Clock size={20} />}       color="var(--talavera-blue-light)" />
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          <StatCard label="Total personas esperadas" value={totalPersonasEsperadas} icon={<Users size={20} />}       color="var(--talavera-blue)" />
+          <StatCard label="Grupos / Familias"        value={totalGrupos}            icon={<Users size={20} />}       color="var(--talavera-blue)" />
+          <StatCard label="Personas confirmadas"     value={personasConfirmadas}    icon={<CheckCircle size={20} />} color="var(--talavera-blue-light)" />
+          <StatCard label="Personas declinadas"      value={personasDeclinadas}     icon={<XCircle size={20} />}     color="var(--talavera-cobalt)" />
+          <StatCard label="Grupos sin respuesta"     value={pending.length}         icon={<Clock size={20} />}       color="var(--talavera-blue-light)" />
         </div>
 
         {/* Personas + Eventos + Hospedaje */}
