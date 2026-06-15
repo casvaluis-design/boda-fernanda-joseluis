@@ -107,14 +107,25 @@ export default function AdminPage() {
   // Restaurar sesión desde sessionStorage al cargar
   useEffect(() => {
     const saved = sessionStorage.getItem("admin_pw");
-    const expected = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "boda2025admin";
-    if (saved === expected) { setAdminPw(saved); setAuthed(true); loadData(saved); }
+    if (!saved) return;
+    fetch("/api/admin/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: saved }),
+    }).then((res) => {
+      if (res.ok) { setAdminPw(saved); setAuthed(true); loadData(saved); }
+      else sessionStorage.removeItem("admin_pw");
+    });
   }, [loadData]);
 
-  function handleAuth(e: React.FormEvent) {
+  async function handleAuth(e: React.FormEvent) {
     e.preventDefault();
-    const expected = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "boda2025admin";
-    if (password === expected) { sessionStorage.setItem("admin_pw", password); setAdminPw(password); setAuthed(true); loadData(password); }
+    const res = await fetch("/api/admin/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password }),
+    });
+    if (res.ok) { sessionStorage.setItem("admin_pw", password); setAdminPw(password); setAuthed(true); loadData(password); }
     else setAuthError("Contraseña incorrecta.");
   }
 
