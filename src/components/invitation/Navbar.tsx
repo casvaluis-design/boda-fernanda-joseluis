@@ -8,7 +8,7 @@ const LINKS = [
   { label: "Nosotros", href: "#nosotros" },
   { label: "Hospedaje",href: "#hospedaje" },
   { label: "Regalos",  href: "#regalos" },
-  { label: "RSVP",     href: "#rsvp" },
+  { label: "RSVP",     href: "#rsvp-form" },
 ];
 
 export function Navbar({ rsvpHref = "#rsvp" }: { rsvpHref?: string }) {
@@ -90,15 +90,22 @@ export function Navbar({ rsvpHref = "#rsvp" }: { rsvpHref?: string }) {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden px-6 pb-6 flex flex-col gap-4"
-          style={{ background: "rgba(255,255,255,0.98)", borderTop: "1px solid var(--talavera-blue-pale)" }}>
+        <div className="md:hidden flex flex-col"
+          style={{ background: "white", borderTop: "1px solid var(--talavera-blue-pale)", boxShadow: "0 8px 24px rgba(0,0,0,0.08)" }}>
           {LINKS.map((l) => (
             <button key={l.href} onClick={() => scrollTo(l.href)}
-              className="text-left text-xs uppercase"
-              style={{ fontFamily: "var(--font-jost)", letterSpacing: "0.18em", color: "var(--text-dark)" }}>
+              className="text-left px-6 py-4 text-xs uppercase border-b"
+              style={{ fontFamily: "var(--font-jost)", letterSpacing: "0.22em", color: "var(--text-dark)", borderColor: "var(--talavera-blue-pale)" }}>
               {l.label}
             </button>
           ))}
+          <div className="px-6 py-4">
+            <button onClick={() => scrollTo("#rsvp-form")}
+              className="w-full py-3 text-xs uppercase text-white text-center"
+              style={{ background: "var(--talavera-blue)", fontFamily: "var(--font-jost)", letterSpacing: "0.22em" }}>
+              Confirmar asistencia
+            </button>
+          </div>
         </div>
       )}
     </nav>
