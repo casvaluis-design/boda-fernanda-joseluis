@@ -266,7 +266,7 @@ export default function RSVPPage() {
       {/* ══════════════════════════════════════════
           RSVP PERSONALIZADO
       ══════════════════════════════════════════ */}
-      <section id="rsvp-form" ref={rsvpRef} className="relative w-full py-28 overflow-hidden"
+      <section id="rsvp-form" ref={rsvpRef} className="relative w-full pt-20 pb-10 overflow-hidden"
         style={{ background: "var(--talavera-blue)" }}>
         <TalaveraBgPattern opacity={0.1} />
         <div className="relative z-10 flex flex-col items-center text-center px-6">
