@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Clock, ExternalLink, CreditCard, Gift, X, BedDouble } from "lucide-react";
+import { MapPin, Clock, ExternalLink, CreditCard, Gift, X, BedDouble, Copy, Check } from "lucide-react";
 import { TalaveraBgPattern, TalavераCorner, TalaveraBand } from "./TalaveraDecor";
 
 // ─── Datos ────────────────────────────────────────────────────────────────────
@@ -352,6 +352,23 @@ export function HospedajeSection() {
 }
 
 // ─── Mesa de regalos ──────────────────────────────────────────────────────────
+const CLABE = "012180004908995422";
+
+function CopyClabe() {
+  const [copied, setCopied] = useState(false);
+  function copy() {
+    navigator.clipboard.writeText(CLABE);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+  return (
+    <button onClick={copy} className="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 border transition-all hover:opacity-70"
+      style={{ borderColor: "var(--talavera-blue)", color: copied ? "#16a34a" : "var(--talavera-blue)", fontFamily: "var(--font-jost)", fontSize: "0.72rem", letterSpacing: "0.12em" }}>
+      {copied ? <><Check size={13} /> Copiado!</> : <><Copy size={13} /> Copiar CLABE</>}
+    </button>
+  );
+}
+
 export function RegalosSection() {
   return (
     <section id="regalos" className="w-full relative py-24 overflow-hidden" style={{ background: "white" }}>
@@ -395,9 +412,10 @@ export function RegalosSection() {
               <p className="mt-3" style={{ fontFamily: "var(--font-jost)", fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.8 }}>
                 Banco: BBVA<br />
                 Cuenta: 0490899542<br />
-                CLABE: 012180004908995422<br />
+                CLABE: {CLABE}<br />
                 A nombre de: José Luis Castro
               </p>
+              <CopyClabe />
             </div>
           </div>
         </div>
