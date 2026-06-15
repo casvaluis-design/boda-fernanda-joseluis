@@ -227,7 +227,7 @@ export default function RSVPPage() {
           </h1>
 
           <div className="animate-fade-in-up delay-600 my-8">
-            <img src="/images/patron-hero-6-1.svg" alt="" style={{ width: "clamp(180px,40vw,320px)", height: "auto", opacity: 0.9 }} />
+            <img src="/images/patron-hero-6-1.svg" alt="" style={{ width: "clamp(260px,80vw,320px)", height: "auto", opacity: 0.9 }} />
           </div>
 
           <p className="animate-fade-in-up delay-800 uppercase mb-2"

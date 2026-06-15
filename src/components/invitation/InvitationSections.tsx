@@ -149,9 +149,8 @@ export function SalonSection() {
             className="w-full h-full object-cover" />
         </div>
         {/* Info */}
-        <div className="relative flex flex-col justify-center px-10 py-16 lg:px-20">
-          <TalaveraBgPattern opacity={0.04} />
-          <div className="relative z-10">
+        <div className="flex flex-col justify-center px-10 py-16 lg:px-20">
+          <div>
             <p className="uppercase mb-3" style={{ fontFamily: "var(--font-jost)", fontSize: "0.68rem", letterSpacing: "0.45em", color: "var(--talavera-blue)" }}>
               Salón del Evento
             </p>
@@ -365,7 +364,7 @@ export function RegalosSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Liverpool */}
           <div className="relative border p-10 text-center flex flex-col gap-5 items-center"
-            style={{ borderColor: "var(--talavera-blue-pale)" }}>
+            style={{ borderColor: "var(--talavera-blue-pale)", background: "white" }}>
             <div className="absolute top-0 left-0"><TalavераCorner position="tl" size={32} /></div>
             <div className="absolute top-0 right-0"><TalavераCorner position="tr" size={32} /></div>
             <div className="absolute bottom-0 left-0"><TalavераCorner position="bl" size={32} /></div>
@@ -384,7 +383,7 @@ export function RegalosSection() {
           </div>
           {/* Transferencia */}
           <div className="relative border p-10 text-center flex flex-col gap-5 items-center"
-            style={{ borderColor: "var(--talavera-blue-pale)" }}>
+            style={{ borderColor: "var(--talavera-blue-pale)", background: "white" }}>
             <div className="absolute top-0 left-0"><TalavераCorner position="tl" size={32} /></div>
             <div className="absolute top-0 right-0"><TalavераCorner position="tr" size={32} /></div>
             <div className="absolute bottom-0 left-0"><TalavераCorner position="bl" size={32} /></div>
