@@ -80,17 +80,17 @@ export function TalaveraBand() {
   return (
     <>
       <div className="w-full overflow-hidden hidden sm:block" style={{
-        height: 64,
-        backgroundImage: "url('/images/patron-hero-2.svg')",
+        height: 72,
+        backgroundImage: "url('/images/patron-hero-3.svg')",
         backgroundRepeat: "repeat-x",
-        backgroundSize: "64px 64px",
+        backgroundSize: "auto 72px",
         backgroundPosition: "center center",
       }} />
       <div className="w-full overflow-hidden sm:hidden" style={{
-        height: 40,
-        backgroundImage: "url('/images/patron-hero-2.svg')",
+        height: 44,
+        backgroundImage: "url('/images/patron-hero-3.svg')",
         backgroundRepeat: "repeat-x",
-        backgroundSize: "40px 40px",
+        backgroundSize: "auto 44px",
         backgroundPosition: "center center",
       }} />
     </>
