@@ -296,17 +296,6 @@ export default function RSVPPage() {
       <div className="w-full" style={{ background: "white" }}>
         <div className="max-w-xl mx-auto px-6 py-16">
 
-          {/* Fecha límite y nota */}
-          <div className="text-center mb-10">
-            <p style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.1rem,2vw,1.4rem)", fontStyle: "italic", color: "var(--text-muted)", lineHeight: 1.9 }}>
-              Por favor confirma tu asistencia antes del<br />
-              <span style={{ color: "var(--talavera-blue)", fontWeight: 500 }}>31 de julio de 2026</span>
-            </p>
-            <p className="mt-2" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1rem", fontStyle: "italic", color: "var(--text-muted)" }}>
-              Agradecemos su presencia sin niños.
-            </p>
-          </div>
-
           {/* Ya confirmó */}
           {alreadySubmitted && (
             <div className="text-center py-8">
@@ -358,6 +347,17 @@ export default function RSVPPage() {
                   </ChoiceBtn>
                 </div>
               </FormSection>
+
+              {/* Fecha límite y nota */}
+              <div className="text-center">
+                <p style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.1rem,2vw,1.4rem)", fontStyle: "italic", color: "var(--text-muted)", lineHeight: 1.9 }}>
+                  Por favor confirma tu asistencia antes del<br />
+                  <span style={{ color: "var(--talavera-blue)", fontWeight: 500 }}>31 de julio de 2026</span>
+                </p>
+                <p className="mt-2" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1rem", fontStyle: "italic", color: "var(--text-muted)" }}>
+                  Agradecemos su presencia sin niños.
+                </p>
+              </div>
 
               {attending === true && (
                 <>
