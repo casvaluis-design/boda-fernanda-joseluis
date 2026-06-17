@@ -331,6 +331,23 @@ export function HospedajeSection() {
               </tbody>
             </table>
 
+            {/* Check-in / Check-out */}
+            <div className="flex gap-4 mb-5 mt-2">
+              <div className="flex-1 text-center py-3 px-2" style={{ background: "var(--talavera-blue-pale)" }}>
+                <p className="uppercase text-xs mb-1" style={{ fontFamily: "var(--font-jost)", letterSpacing: "0.2em", color: "var(--talavera-blue)" }}>Check-in</p>
+                <p className="font-semibold" style={{ fontFamily: "var(--font-playfair)", fontSize: "1.4rem", color: "var(--text-dark)" }}>3:00 pm</p>
+                <p className="text-xs mt-0.5" style={{ fontFamily: "var(--font-jost)", color: "var(--text-muted)" }}>Viernes 16 oct</p>
+              </div>
+              <div className="flex-1 text-center py-3 px-2" style={{ background: "var(--talavera-blue-pale)" }}>
+                <p className="uppercase text-xs mb-1" style={{ fontFamily: "var(--font-jost)", letterSpacing: "0.2em", color: "var(--talavera-blue)" }}>Check-out</p>
+                <p className="font-semibold" style={{ fontFamily: "var(--font-playfair)", fontSize: "1.4rem", color: "var(--text-dark)" }}>11:00 am</p>
+                <p className="text-xs mt-0.5" style={{ fontFamily: "var(--font-jost)", color: "var(--text-muted)" }}>Domingo 18 oct</p>
+              </div>
+            </div>
+
+            <p className="text-xs mb-1" style={{ fontFamily: "var(--font-jost)", color: "var(--talavera-blue)", letterSpacing: "0.05em" }}>
+              ✓ Precios por todo el fin de semana (16 al 18 de octubre)
+            </p>
             <p className="text-xs mb-1" style={{ fontFamily: "var(--font-jost)", color: "var(--talavera-blue)", letterSpacing: "0.05em" }}>
               ✓ Incluyen impuestos y desayunos del sábado y domingo
             </p>
