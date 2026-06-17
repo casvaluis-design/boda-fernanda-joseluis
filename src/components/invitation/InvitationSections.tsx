@@ -351,6 +351,9 @@ export function HospedajeSection() {
             <p className="text-xs mb-1" style={{ fontFamily: "var(--font-jost)", color: "var(--talavera-blue)", letterSpacing: "0.05em" }}>
               ✓ Incluyen impuestos y desayunos del sábado y domingo
             </p>
+            <p className="text-xs mb-1" style={{ fontFamily: "var(--font-jost)", color: "var(--talavera-blue)", letterSpacing: "0.05em" }}>
+              ✓ Se aparta con el 50% — el resto se liquida a tu llegada
+            </p>
             <p className="text-xs italic" style={{ fontFamily: "var(--font-cormorant)", color: "var(--text-muted)", fontSize: "0.95rem" }}>
               * Sujeto a disponibilidad de habitaciones al momento de la reservación.
             </p>
