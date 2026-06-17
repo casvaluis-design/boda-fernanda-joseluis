@@ -78,6 +78,7 @@ export default function AdminPage() {
   const [filter, setFilter] = useState<FilterStatus>("all");
   const [eventFilter, setEventFilter] = useState<EventKey | "all">("all");
   const [hospFilter, setHospFilter] = useState<"all" | "casa_begonias" | "otro" | "none">("all");
+  const [sideFilter, setSideFilter] = useState<"all" | "Fer" | "Luis" | "none">("all");
   const [search, setSearch] = useState("");
 
   // Modals
@@ -180,11 +181,11 @@ export default function AdminPage() {
   }
 
   function downloadTemplate() {
-    const header = ["Nombre", "Telefono", "Email", "Lugares", "Hotel Alma", "Notas"];
+    const header = ["Nombre", "Telefono", "Email", "Lugares", "Hotel Alma", "Notas", "De parte de"];
     const examples = [
-      ["María González", "5211234567", "maria@ejemplo.com", "1", "NO", "Solo ella"],
-      ["Carlos y Ana López", "5219876543", "", "2", "NO", "Amigos de la universidad"],
-      ["Familia Martínez", "5215554433", "", "4", "SI", "Tíos de Fernanda"],
+      ["María González", "5211234567", "maria@ejemplo.com", "1", "NO", "", "Fer"],
+      ["Carlos y Ana López", "5219876543", "", "2", "NO", "Amigos de la universidad", "Luis"],
+      ["Familia Martínez", "5215554433", "", "4", "SI", "Tíos de Fernanda", "Fer"],
     ];
     const csv = [header, ...examples].map((r) => r.map((c) => `"${c}"`).join(",")).join("\n");
     const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
@@ -292,7 +293,8 @@ export default function AdminPage() {
     const sr = g.name.toLowerCase().includes(search.toLowerCase()) || (g.phone?.includes(search) ?? false);
     const ev = eventFilter === "all" || (g.rsvp?.events ?? []).includes(eventFilter as EventKey);
     const ho = hospFilter === "all" || (hospFilter === "none" ? !g.rsvp?.accommodation || g.rsvp.accommodation === "none" : g.rsvp?.accommodation === hospFilter);
-    return st && sr && ev && ho;
+    const si = sideFilter === "all" || (sideFilter === "none" ? !g.side : g.side === sideFilter);
+    return st && sr && ev && ho && si;
   });
 
   const statusColor = { confirmed: "var(--talavera-blue-light)", declined: "var(--talavera-cobalt)", pending: "var(--talavera-blue-light)" };
@@ -434,6 +436,24 @@ export default function AdminPage() {
               <button key={h.key} onClick={() => setHospFilter(h.key)} className="px-3 py-1.5 text-xs border transition-colors"
                 style={{ fontFamily: "var(--font-jost)", background: hospFilter === h.key ? "var(--talavera-blue)" : "white", color: hospFilter === h.key ? "#FAF6F0" : "var(--text-muted)", borderColor: hospFilter === h.key ? "var(--talavera-blue)" : "rgba(0,0,0,0.1)" }}>
                 {h.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Filtro De parte de */}
+        <div className="flex items-center gap-3 flex-wrap">
+          <span className="text-xs uppercase" style={{ fontFamily: "var(--font-jost)", color: "var(--text-muted)", letterSpacing: "0.15em" }}>De parte de:</span>
+          <div className="flex gap-2 flex-wrap">
+            {([
+              { key: "all", label: "Todos" },
+              { key: "Fer", label: "Fernanda" },
+              { key: "Luis", label: "Jose Luis" },
+              { key: "none", label: "Sin asignar" },
+            ] as { key: "all" | "Fer" | "Luis" | "none"; label: string }[]).map((s) => (
+              <button key={s.key} onClick={() => setSideFilter(s.key)} className="px-3 py-1.5 text-xs border transition-colors"
+                style={{ fontFamily: "var(--font-jost)", background: sideFilter === s.key ? "var(--talavera-blue)" : "white", color: sideFilter === s.key ? "#FAF6F0" : "var(--text-muted)", borderColor: sideFilter === s.key ? "var(--talavera-blue)" : "rgba(0,0,0,0.1)" }}>
+                {s.label}
               </button>
             ))}
           </div>

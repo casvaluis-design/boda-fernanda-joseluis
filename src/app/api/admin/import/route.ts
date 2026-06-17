@@ -44,6 +44,8 @@ export async function POST(request: NextRequest) {
     const compRaw  = row["Lugares"] ?? row["lugares"] ?? row["+"] ?? "0";
     const hotelRaw = (row["Hotel Alma"] ?? row["hotel_alma"] ?? row["Hotel"] ?? "").trim().toUpperCase();
     const notes    = (row["Notas"] ?? row["notas"] ?? "").trim();
+    const sideRaw  = (row["De parte de"] ?? row["de_parte_de"] ?? row["Parte"] ?? "").trim();
+    const side     = sideRaw === "Fer" ? "Fer" : sideRaw === "Luis" ? "Luis" : null;
 
     const max_companions  = parseCompanions(compRaw);
     const guest_type      = parseGuestType(max_companions);
@@ -57,6 +59,7 @@ export async function POST(request: NextRequest) {
       max_companions,
       hotel_assignment,
       notes:            notes || "",
+      side:             side,
     });
 
     if (error) {

@@ -33,6 +33,7 @@ export interface Guest {
   status: RSVPStatus
   hotel_assignment: 'hotel_alma' | 'none'   // interno, nunca visible al invitado
   notes: string                              // notas internas, nunca visible al invitado
+  side?: 'Fer' | 'Luis' | null
   created_at: string
 }
 
