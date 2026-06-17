@@ -23,7 +23,7 @@ export const AGENDA: AgendaDay[] = [
   {
     num: 2, title: "Ceremonia + Recepción",
     date: "Sábado 17 de octubre, 2026",
-    location: "Jardín Alma", city: "Jiutepec, Morelos", time: "1:30 PM",
+    location: "Jardín Alma", city: "Jiutepec, Morelos", time: "2:30 PM",
     dresscode: { title: "Formal", lines: ["Vestido largo para ellas", "Traje para ellos", "NO tenis · NO guayabera"], insp: "/images/dresscode-boda-sabado.png" },
   },
 ];
