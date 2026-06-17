@@ -141,7 +141,7 @@ export default function InvitationPage() {
           <div className="w-14 h-px mb-8" style={{ background: "rgba(255,255,255,0.3)" }} />
           <p style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.1rem,2vw,1.4rem)", fontStyle: "italic", color: "rgba(255,255,255,0.85)", lineHeight: 1.9 }}>
             Por favor confirma tu asistencia antes del<br />
-            <span style={{ color: "white", fontWeight: 500 }}>31 de julio de 2026</span>
+            <span style={{ color: "white", fontWeight: 500 }}>30 de agosto de 2026</span>
           </p>
           <p className="mt-3 mb-4"
             style={{ fontFamily: "var(--font-cormorant)", fontSize: "1rem", fontStyle: "italic", color: "rgba(255,255,255,0.6)" }}>
