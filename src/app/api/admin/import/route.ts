@@ -10,9 +10,11 @@ function checkAuth(request: NextRequest) {
 function parseCompanions(value: string): number {
   const clean = String(value ?? "").trim().replace(/\+/g, "");
   const n = parseInt(clean);
-  if (isNaN(n) || n < 0) return 0;
-  if (n > 5) return 5;
-  return n;
+  if (isNaN(n) || n <= 0) return 0;
+  // El CSV indica el total de personas (titular incluido), max_companions = total - 1
+  const companions = n - 1;
+  if (companions > 10) return 10;
+  return companions;
 }
 
 function parseGuestType(companions: number) {

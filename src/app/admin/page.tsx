@@ -182,9 +182,9 @@ export default function AdminPage() {
   function downloadTemplate() {
     const header = ["Nombre", "Telefono", "Email", "Lugares", "Hotel Alma", "Notas"];
     const examples = [
-      ["María González", "5211234567", "maria@ejemplo.com", "0", "NO", ""],
-      ["Carlos y Ana López", "5219876543", "", "+1", "NO", "Amigos de la universidad"],
-      ["Familia Martínez", "5215554433", "", "+3", "SI", "Tíos de Fernanda"],
+      ["María González", "5211234567", "maria@ejemplo.com", "1", "NO", "Solo ella"],
+      ["Carlos y Ana López", "5219876543", "", "2", "NO", "Amigos de la universidad"],
+      ["Familia Martínez", "5215554433", "", "4", "SI", "Tíos de Fernanda"],
     ];
     const csv = [header, ...examples].map((r) => r.map((c) => `"${c}"`).join(",")).join("\n");
     const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
