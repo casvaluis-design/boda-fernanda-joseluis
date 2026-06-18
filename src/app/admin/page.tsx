@@ -37,7 +37,7 @@ function CopyBtn({ text }: { text: string }) {
 
 function WABtn({ phone, name, link }: { phone?: string; name: string; link: string }) {
   if (!phone) return <span className="text-xs" style={{ color: "var(--text-muted)" }}>Sin tel.</span>;
-  const msg = encodeURIComponent(`Hola ${name},\n\nFernanda y Jose Luis te invitan a confirmar tu asistencia a su boda.\n\nConfirma aqui: ${link}`);
+  const msg = encodeURIComponent(`Hola, ${name} ¡Por fin llegó el momento! 🥂✨\n\nNos hace la ilusión más grande del mundo compartir contigo nuestra invitación oficial. Hemos planeado este día con muchísimo amor y nuestra boda no sería lo mismo sin ti.\n\nToda la información del evento la encontrarás detallada dentro del siguiente enlace:\n\n${link}\n\nSolo te pedimos un enorme favor: ayúdanos confirmando tu asistencia como máximo el 31 de agosto para poder asegurar tu lugar.\n\n¡Que empiece la cuenta regresiva! Nos morimos de ganas de celebrar contigo. 🎉🕺`);
   return (
     <a href={`https://wa.me/${phone.replace(/\D/g, "")}?text=${msg}`} target="_blank" rel="noopener noreferrer"
       className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded transition-opacity hover:opacity-75"
