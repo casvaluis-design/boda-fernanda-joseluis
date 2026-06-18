@@ -100,7 +100,7 @@ export function Navbar({ rsvpHref = "#rsvp" }: { rsvpHref?: string }) {
             </button>
           ))}
           <div className="px-6 py-4">
-            <button onClick={() => scrollTo("#rsvp-form")}
+            <button onClick={() => scrollTo(rsvpHref)}
               className="w-full py-3 text-xs uppercase text-white text-center"
               style={{ background: "var(--talavera-blue)", fontFamily: "var(--font-jost)", letterSpacing: "0.22em" }}>
               Confirmar asistencia
