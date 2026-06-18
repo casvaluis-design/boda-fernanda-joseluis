@@ -66,7 +66,7 @@ export function Navbar({ rsvpHref = "#rsvp" }: { rsvpHref?: string }) {
 
         {/* CTA desktop */}
         <a href={rsvpHref}
-          onClick={(e) => { e.preventDefault(); scrollTo("#rsvp"); }}
+          onClick={(e) => { e.preventDefault(); scrollTo(rsvpHref); }}
           className="hidden md:inline-block px-5 py-2 text-xs uppercase tracking-widest transition-all hover:opacity-80"
           style={{
             fontFamily: "var(--font-jost)",
