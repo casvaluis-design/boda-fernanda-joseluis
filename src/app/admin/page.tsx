@@ -79,6 +79,7 @@ export default function AdminPage() {
   const [eventFilter, setEventFilter] = useState<EventKey | "all">("all");
   const [hospFilter, setHospFilter] = useState<"all" | "casa_begonias" | "otro" | "none">("all");
   const [sideFilter, setSideFilter] = useState<"all" | "Fer" | "Luis" | "none">("all");
+  const [sortBy, setSortBy] = useState<"name" | "confirmed_at">("name");
   const [search, setSearch] = useState("");
 
   // Modals
@@ -295,6 +296,11 @@ export default function AdminPage() {
     const ho = hospFilter === "all" || (hospFilter === "none" ? !g.rsvp?.accommodation || g.rsvp.accommodation === "none" : g.rsvp?.accommodation === hospFilter);
     const si = sideFilter === "all" || (sideFilter === "none" ? !g.side : g.side === sideFilter);
     return st && sr && ev && ho && si;
+  }).sort((a, b) => {
+    if (sortBy === "name") return a.name.localeCompare(b.name, "es");
+    const dateA = a.rsvp?.submitted_at ? new Date(a.rsvp.submitted_at).getTime() : 0;
+    const dateB = b.rsvp?.submitted_at ? new Date(b.rsvp.submitted_at).getTime() : 0;
+    return dateB - dateA;
   });
 
   const statusColor = { confirmed: "var(--talavera-blue-light)", declined: "var(--talavera-cobalt)", pending: "var(--talavera-blue-light)" };
@@ -407,6 +413,12 @@ export default function AdminPage() {
             <input type="text" placeholder="Buscar nombre o teléfono..." value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="flex-1 px-3 py-2 border border-gray-200 bg-white text-sm outline-none" style={{ fontFamily: "var(--font-jost)" }} />
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value as "name" | "confirmed_at")}
+              className="px-3 py-2 border border-gray-200 bg-white text-xs outline-none"
+              style={{ fontFamily: "var(--font-jost)", color: "var(--talavera-blue)", minWidth: 200 }}>
+              <option value="name">Ordenar: Nombre (A-Z)</option>
+              <option value="confirmed_at">Ordenar: Fecha de confirmación</option>
+            </select>
             <div className="flex gap-2 flex-wrap">
               {(["all", "confirmed", "declined", "pending"] as FilterStatus[]).map((s) => (
                 <button key={s} onClick={() => setFilter(s)} className="px-3 py-2 text-xs uppercase border transition-colors"
