@@ -17,7 +17,7 @@ export const AGENDA: AgendaDay[] = [
   {
     num: 1, title: "Civil + Rompe Hielos",
     date: "Viernes 16 de octubre, 2026",
-    location: "Jardín Alma", city: "Jiutepec, Morelos", time: "4:30 PM",
+    location: "Jardín Alma", city: "Jiutepec, Morelos", time: "5:00 PM",
     dresscode: { title: "Tonos blancos / nude / beige", lines: ["Ligeros y cómodos", "Manta o guayabera"], insp: "/images/dresscode-civil-viernes.png" },
   },
   {
