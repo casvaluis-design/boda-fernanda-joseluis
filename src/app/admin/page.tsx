@@ -294,9 +294,12 @@ export default function AdminPage() {
   const totalPersonasEsperadas = guests.reduce((a, g) => a + (g.max_companions ?? 0) + 1, 0);
   // Grupos = número de registros
   const totalGrupos = guests.length;
-  // Personas confirmadas/declinadas = suma del attendee_count reportado en el RSVP
+  // Personas confirmadas = suma del attendee_count del RSVP
   const personasConfirmadas = confirmed.reduce((a, g) => a + (g.rsvp?.attendee_count ?? 0), 0);
-  const personasDeclinadas  = declined.reduce((a, g) => a + (g.rsvp?.attendee_count ?? (g.max_companions ?? 0) + 1), 0);
+  // Personas declinadas = suma del max_companions+1 de grupos que declinaron (attendee_count puede ser 0)
+  const personasDeclinadas = declined.reduce((a, g) => a + (g.max_companions ?? 0) + 1, 0);
+  // Personas pendientes = total esperadas - confirmadas - declinadas
+  const personasPendientes = totalPersonasEsperadas - personasConfirmadas - personasDeclinadas;
   const totalPeople = personasConfirmadas;
   const eventCounts = EVENTS.map((ev) => ({
     ...ev,
@@ -360,12 +363,13 @@ export default function AdminPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6">
 
         {/* Stat cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           <StatCard label="Total personas esperadas" value={totalPersonasEsperadas} icon={<Users size={20} />}       color="var(--talavera-blue)" />
           <StatCard label="Grupos / Familias"        value={totalGrupos}            icon={<Users size={20} />}       color="var(--talavera-blue)" />
           <StatCard label="Personas confirmadas"     value={personasConfirmadas}    icon={<CheckCircle size={20} />} color="var(--talavera-blue-light)" />
           <StatCard label="Personas declinadas"      value={personasDeclinadas}     icon={<XCircle size={20} />}     color="var(--talavera-cobalt)" />
           <StatCard label="Grupos sin respuesta"     value={pending.length}         icon={<Clock size={20} />}       color="var(--talavera-blue-light)" />
+          <StatCard label="Personas por confirmar"   value={personasPendientes}     icon={<Clock size={20} />}       color="var(--talavera-cobalt)" />
         </div>
 
         {/* Personas + Eventos + Hospedaje */}
