@@ -290,8 +290,8 @@ export default function AdminPage() {
   const confirmed  = guests.filter((g) => g.status === "confirmed");
   const declined   = guests.filter((g) => g.status === "declined");
   const pending    = guests.filter((g) => g.status === "pending");
-  // Total personas esperadas = suma de (max_companions + 1) de todos los grupos
-  const totalPersonasEsperadas = guests.reduce((a, g) => a + (g.max_companions ?? 0) + 1, 0);
+  // Total personas esperadas = suma de (max_companions + 1) excluyendo declinados
+  const totalPersonasEsperadas = guests.filter((g) => g.status !== "declined").reduce((a, g) => a + (g.max_companions ?? 0) + 1, 0);
   // Grupos = número de registros
   const totalGrupos = guests.length;
   // Personas confirmadas = suma del attendee_count del RSVP
