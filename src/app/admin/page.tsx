@@ -290,16 +290,18 @@ export default function AdminPage() {
   const confirmed  = guests.filter((g) => g.status === "confirmed");
   const declined   = guests.filter((g) => g.status === "declined");
   const pending    = guests.filter((g) => g.status === "pending");
-  // Total personas esperadas = suma de (max_companions + 1) excluyendo declinados
+  // Total invitados (todos, incluyendo declinados)
+  const totalInvitados = guests.reduce((a, g) => a + (g.max_companions ?? 0) + 1, 0);
+  // Total personas esperadas = excluyendo declinados (los que aún pueden venir)
   const totalPersonasEsperadas = guests.filter((g) => g.status !== "declined").reduce((a, g) => a + (g.max_companions ?? 0) + 1, 0);
   // Grupos = número de registros
   const totalGrupos = guests.length;
   // Personas confirmadas = suma del attendee_count del RSVP
   const personasConfirmadas = confirmed.reduce((a, g) => a + (g.rsvp?.attendee_count ?? 0), 0);
-  // Personas declinadas = suma del max_companions+1 de grupos que declinaron (attendee_count puede ser 0)
+  // Personas declinadas = suma del max_companions+1 de grupos que declinaron
   const personasDeclinadas = declined.reduce((a, g) => a + (g.max_companions ?? 0) + 1, 0);
-  // Personas pendientes = total esperadas - confirmadas - declinadas
-  const personasPendientes = totalPersonasEsperadas - personasConfirmadas - personasDeclinadas;
+  // Personas por confirmar = total invitados - confirmadas - declinadas (suma = totalInvitados)
+  const personasPendientes = totalInvitados - personasConfirmadas - personasDeclinadas;
   const totalPeople = personasConfirmadas;
   const eventCounts = EVENTS.map((ev) => ({
     ...ev,
