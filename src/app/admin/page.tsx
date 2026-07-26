@@ -300,8 +300,8 @@ export default function AdminPage() {
   const personasConfirmadas = confirmed.reduce((a, g) => a + (g.rsvp?.attendee_count ?? 0), 0);
   // Personas declinadas = suma del max_companions+1 de grupos que declinaron
   const personasDeclinadas = declined.reduce((a, g) => a + (g.max_companions ?? 0) + 1, 0);
-  // Personas por confirmar = total invitados - confirmadas - declinadas (suma = totalInvitados)
-  const personasPendientes = totalInvitados - personasConfirmadas - personasDeclinadas;
+  // Personas por confirmar = suma directa de max_companions+1 de los grupos pendientes
+  const personasPendientes = pending.reduce((a, g) => a + (g.max_companions ?? 0) + 1, 0);
   const totalPeople = personasConfirmadas;
   const eventCounts = EVENTS.map((ev) => ({
     ...ev,
